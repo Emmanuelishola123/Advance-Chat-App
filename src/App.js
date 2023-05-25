@@ -11,8 +11,8 @@ import Router from "./routes";
 import { closeSnackBar } from "./redux/slices/app";
 import { socket } from "./socket";
 
-const vertical = "bottom";
-const horizontal = "center";
+const vertical = "top";
+const horizontal = "right";
 
 const Alert = React.forwardRef((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -41,13 +41,13 @@ function App() {
           autoHideDuration={4000}
           key={vertical + horizontal}
           onClose={() => {
-            console.log("This is clicked");
+            console.log("This is clicked", {message});
             dispatch(closeSnackBar());
           }}
         >
           <Alert
             onClose={() => {
-              console.log("This is clicked");
+              console.log("This is clicked", {severity});
               dispatch(closeSnackBar());
             }}
             severity={severity}

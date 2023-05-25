@@ -17,7 +17,7 @@ import { SimpleBarStyle } from "../../components/Scrollbar";
 import { useTheme } from "@mui/material/styles";
 import useResponsive from "../../hooks/useResponsive";
 import BottomNav from "../../layouts/dashboard/BottomNav";
-import { ChatList } from "../../data";
+// import { ChatList } from "../../data";
 import ChatElement from "../../components/ChatElement";
 import {
   Search,
@@ -117,7 +117,7 @@ const Chats = () => {
             </Stack>
             <Divider />
           </Stack>
-          <Stack sx={{ flexGrow: 1, overflow: "scroll", height: "100%" }}>
+          <Stack sx={{ flexGrow: 1, overflow: "auto", height: "100%" }}>
             <SimpleBarStyle timeout={500} clickOnTrack={false}>
               <Stack spacing={2.4}>
                 {/* <Typography variant="subtitle2" sx={{ color: "#676667" }}>

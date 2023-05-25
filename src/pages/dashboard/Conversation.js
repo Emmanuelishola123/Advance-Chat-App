@@ -5,7 +5,7 @@ import { SimpleBarStyle } from "../../components/Scrollbar";
 
 import { ChatHeader, ChatFooter } from "../../components/Chat";
 import useResponsive from "../../hooks/useResponsive";
-import { Chat_History } from "../../data";
+// import { Chat_History } from "../../data";
 import {
   DocMsg,
   LinkMsg,
@@ -121,7 +121,7 @@ const ChatComponent = () => {
         sx={{
           position: "relative",
           flexGrow: 1,
-          overflow: "scroll",
+          overflow: "auto",
 
           backgroundColor:
             theme.palette.mode === "light"

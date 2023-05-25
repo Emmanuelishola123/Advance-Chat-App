@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import SimpleBarReact from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
@@ -23,10 +24,10 @@ const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
     },
   },
   '& .simplebar-track.simplebar-vertical': {
-    width: 10,
+    width: 5,
   },
   '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
-    height: 6,
+    height: 4,
   },
   '& .simplebar-mask': {
     zIndex: 'inherit',
@@ -50,7 +51,7 @@ export default function Scrollbar({ children, sx, ...other }) {
 
   if (isMobile) {
     return (
-      <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
+      <Box sx={{ overflowX: 'auto',  ...sx }} {...other}>
         {children}
       </Box>
     );

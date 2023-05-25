@@ -4,7 +4,7 @@ import { Avatar, Box, Fade, Menu, MenuItem, Stack } from "@mui/material";
 import { faker } from "@faker-js/faker";
 
 import { Profile_Menu } from "../../data";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { LogoutUser } from "../../redux/slices/auth";
 import { socket } from "../../socket";
 

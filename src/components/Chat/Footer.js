@@ -28,8 +28,8 @@ import { useSelector } from "react-redux";
 
 const StyledInput = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
-    paddingTop: "12px !important",
-    paddingBottom: "12px !important",
+    paddingTop: "14px !important",
+    paddingBottom: "14px !important",
   },
 }));
 
@@ -84,60 +84,73 @@ const ChatInput = ({
       }}
       fullWidth
       placeholder="Write a message..."
-      variant="filled"
+      variant="outlined"
       InputProps={{
         disableUnderline: true,
         startAdornment: (
-          <Stack sx={{ width: "max-content" }}>
-            <Stack
-              sx={{
-                position: "relative",
-                display: openActions ? "inline-block" : "none",
-              }}
-            >
-              {Actions.map((el) => (
-                <Tooltip placement="right" title={el.title}>
-                  <Fab
-                    onClick={() => {
-                      setOpenActions(!openActions);
-                    }}
-                    sx={{
-                      position: "absolute",
-                      top: -el.y,
-                      backgroundColor: el.color,
-                    }}
-                    aria-label="add"
-                  >
-                    {el.icon}
-                  </Fab>
-                </Tooltip>
-              ))}
+          <>
+            <Stack sx={{ position: "relative" }}>
+              <InputAdornment>
+                <IconButton
+                  onClick={() => {
+                    setOpenPicker(!openPicker);
+                  }}
+                >
+                  <Smiley size={"2rem"} />
+                </IconButton>
+              </InputAdornment>
             </Stack>
+            <Stack sx={{ width: "max-content" }}>
+              <Stack
+                sx={{
+                  position: "relative",
+                  display: openActions ? "inline-block" : "none",
+                }}
+              >
+                {Actions.map((el) => (
+                  <Tooltip placement="right" title={el.title}>
+                    <Fab
+                      onClick={() => {
+                        setOpenActions(!openActions);
+                      }}
+                      sx={{
+                        position: "absolute",
+                        top: -el.y,
+                        backgroundColor: el.color,
+                      }}
+                      aria-label="add"
+                    >
+                      {el.icon}
+                    </Fab>
+                  </Tooltip>
+                ))}
+              </Stack>
 
-            <InputAdornment>
-              <IconButton
-                onClick={() => {
-                  setOpenActions(!openActions);
-                }}
-              >
-                <LinkSimple />
-              </IconButton>
-            </InputAdornment>
-          </Stack>
+              <InputAdornment>
+                <IconButton
+                  onClick={() => {
+                    setOpenActions(!openActions);
+                  }}
+                >
+                  <LinkSimple />
+                </IconButton>
+              </InputAdornment>
+            </Stack>
+          </>
         ),
-        endAdornment: (
-          <Stack sx={{ position: "relative" }}>
-            <InputAdornment>
-              <IconButton
-                onClick={() => {
-                  setOpenPicker(!openPicker);
-                }}
-              >
-                <Smiley />
-              </IconButton>
-            </InputAdornment>
-          </Stack>
-        ),
+        // endAdornment: (
+        //   <Stack sx={{ position: "relative" }}>
+        //     <InputAdornment>
+        //       <IconButton
+        //         onClick={() => {
+        //           setOpenPicker(!openPicker);
+        //         }}
+        //       >
+        //         <Smiley size={'2rem'}  />
+        //       </IconButton>
+        //     </InputAdornment>
+        //   </Stack>
+        // ),
       }}
     />
   );
@@ -147,7 +160,7 @@ function linkify(text) {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(
     urlRegex,
-    (url) => `<a href="${url}" target="_blank">${url}</a>`
+    (url) => `<a href="${url}" target="_blank">${url}</a>`,
   );
 }
 
@@ -160,7 +173,7 @@ const Footer = () => {
   const theme = useTheme();
 
   const { current_conversation } = useSelector(
-    (state) => state.conversation.direct_chat
+    (state) => state.conversation.direct_chat,
   );
 
   const user_id = window.localStorage.getItem("user_id");
@@ -184,7 +197,7 @@ const Footer = () => {
       setValue(
         value.substring(0, selectionStart) +
           emoji +
-          value.substring(selectionEnd)
+          value.substring(selectionEnd),
       );
 
       // Move the cursor to the end of the inserted emoji
@@ -200,7 +213,7 @@ const Footer = () => {
       }}
     >
       <Box
-        p={isMobile ? 1 : 2}
+        p={isMobile ? 1 : 1.5}
         width={"100%"}
         sx={{
           backgroundColor:
@@ -210,7 +223,7 @@ const Footer = () => {
           boxShadow: "0px 0px 2px rgba(0, 0, 0, 0.25)",
         }}
       >
-        <Stack direction="row" alignItems={"center"} spacing={isMobile ? 1 : 3}>
+        <Stack direction="row" alignItems={"center"} spacing={isMobile ? 1 : 2}>
           <Stack sx={{ width: "100%" }}>
             <Box
               style={{
@@ -218,10 +231,12 @@ const Footer = () => {
                 position: "fixed",
                 display: openPicker ? "inline" : "none",
                 bottom: 81,
-                right: isMobile ? 20 : sideBar.open ? 420 : 100,
+                // right: isMobile ? 20 : sideBar.open ? 420 : 100,
+                left: isMobile ? 20 : 420,
               }}
             >
               <Picker
+                size={"2rem"}
                 theme={theme.palette.mode}
                 data={data}
                 onEmojiSelect={(emoji) => {
@@ -242,8 +257,8 @@ const Footer = () => {
             sx={{
               height: 48,
               width: 48,
-              backgroundColor: theme.palette.primary.main,
-              borderRadius: 1.5,
+              // backgroundColor: theme.palette.primary.main,
+              // borderRadius: 1.5,
             }}
           >
             <Stack
@@ -262,7 +277,7 @@ const Footer = () => {
                   });
                 }}
               >
-                <PaperPlaneTilt color="#ffffff" />
+                <PaperPlaneTilt color="#ffffff" size={"2rem"} />
               </IconButton>
             </Stack>
           </Box>
